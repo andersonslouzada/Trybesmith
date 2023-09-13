@@ -15,6 +15,5 @@ describe('ProductsService', function () {
 
     expect(serviceResponse.status).to.equal('SUCCESSFUL');
     expect(serviceResponse.data).to.deep.equal(productMock.returnedProduct);
-
   });
 });
