@@ -11,7 +11,7 @@ import { Order } from '../../../src/types/Order';
 
 chai.use(sinonChai);
 
-describe('OrdersController', function () {
+describe('UNIT - OrdersController', function () {
   const req = {} as Request;
   const res = {} as Response;
 

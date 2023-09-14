@@ -4,11 +4,11 @@ import OrderModel from '../../../src/database/models/order.model';
 import orderService from '../../../src/services/order.service';
 import { ORDER, ORDER_WITH_PRODUCTS } from '../../mocks/order.mock';
 
-describe('OrdersService', function () {
+describe('UNIT - OrdersService', function () {
   beforeEach(function () { sinon.restore(); });  
 
     describe('get /orders', function () {
-      it(' retorna status 200 e todos os produtos', async function () {
+      it(' retorna status 200 e todas as orders', async function () {
         const mockOrder = [OrderModel.build(ORDER)];
         sinon.stub(OrderModel, 'findAll').resolves(mockOrder);
 
