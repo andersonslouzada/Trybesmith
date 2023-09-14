@@ -12,7 +12,7 @@ async function findAll(): Promise<ServiceResponse<Order[]>> {
       const newOrdersObject = {
         id,
         userId,
-        productIds: await getIdProducts(Number(id)),
+        productIds: await getIdProducts(id),
       };
       return newOrdersObject;
     }),
