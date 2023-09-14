@@ -7,13 +7,28 @@ import productMock from '../../mocks/product.mock';
 describe('ProductsService', function () {
   beforeEach(function () { sinon.restore(); });
 
-  it(' retorna status 201 e o produto criado', async function () {
-    const mockCreateReturn = ProductModel.build(productMock.returnedProduct);
-    sinon.stub(ProductModel, 'create').resolves(mockCreateReturn)
+  describe('post /products', function () {
+    it(' retorna status 201 e o produto criado', async function () {
+      const mockCreateReturn = ProductModel.build(productMock.returnedProduct);
+      sinon.stub(ProductModel, 'create').resolves(mockCreateReturn)
+  
+      const serviceResponse = await ProductService.create(productMock.newProduct);
+  
+      expect(serviceResponse.status).to.equal('CREATED');
+      expect(serviceResponse.data).to.deep.equal(productMock.returnedProduct);
+    });
+  })
 
-    const serviceResponse = await ProductService.create(productMock.newProduct);
+  describe('get /products', function () {
+    it(' retorna status 200 e todos os produtos', async function () {
+      const mockFindAllReturn = [ProductModel.build(productMock.returnedProduct)];
+      sinon.stub(ProductModel, 'findAll').resolves(mockFindAllReturn)
+  
+      const serviceResponse = await ProductService.findAll();
+  
+      expect(serviceResponse.status).to.equal('SUCCESSFUL');
+      expect(serviceResponse.data).to.deep.equal(mockFindAllReturn);
+    });
+  })
 
-    expect(serviceResponse.status).to.equal('SUCCESSFUL');
-    expect(serviceResponse.data).to.deep.equal(productMock.returnedProduct);
-  });
 });
