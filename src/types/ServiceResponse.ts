@@ -1,4 +1,4 @@
-type ServiceResponseErrorType = 'INVALID_DATA' | 'UNPROCESSABLE_CONTENT';
+type ServiceResponseErrorType = 'INVALID_DATA' | 'UNPROCESSABLE_CONTENT' | 'UNAUTHORIZED';
 
 export type ServiceResponseError = {
   status: ServiceResponseErrorType,
